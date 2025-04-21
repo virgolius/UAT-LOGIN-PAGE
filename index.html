@@ -1,0 +1,822 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <!-- Google Tag Manager-->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer',"GTM-K3KQ5SJZ");</script>
+    <!-- End Google Tag Manager -->
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    var _paq = window._paq || [];
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+
+
+    function getHeaderParams(){
+        return new URLSearchParams(window.location.search);
+    }
+
+    function encode_base64(obj){
+        return window.btoa(JSON.stringify(obj));
+    }
+    var broFingerprint;
+    var toggleBrowserCuid = "OFF";
+    const urlParams = new URLSearchParams(window.location.search);
+    function initFingerprintJS() {
+
+        if(urlParams.get("browserFingerprintId")){
+            broFingerprint = urlParams.get("browserFingerprintId");
+        }else {
+            FingerprintJS.load({
+                token: '9mEXukYeeotRh62A7Q4Q',
+                endpoint: 'https://fp.homecredit.co.id',
+                scriptUrlPattern: '/credstore-fe/services/resources/assets/js/loader.js'})
+                .then(fp => fp.get())
+        .then(result => broFingerprint = result.visitorId)
+        }
+    }
+
+    function isUrlParamsBrowserFingerprintId(){
+        var isBrowserParamsDom = document.createElement("input");
+        isBrowserParamsDom.id = "isBrowserParams";
+        isBrowserParamsDom.name = "isBrowserParams";
+        isBrowserParamsDom.value = urlParams.get("browserFingerprintId");
+        return isBrowserParamsDom;
+    };
+
+    function generateBroFp(){
+        if(toggleBrowserCuid == "OFF"){
+            return broFingerprint;
+        }
+        if(broFingerprint){
+            return broFingerprint;
+        } else {
+            if(localStorage.getItem("randomBroFp")){
+                return localStorage.getItem("randomBroFp");
+            } else {
+                var rString = randomString(16, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+                localStorage.setItem("randomBroFp", rString);
+                return rString;
+            }
+        }
+    }
+
+    function randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+        return "ran_"+result;
+    }
+
+    function getBaseUrl() {
+        let pathArray = location.href.split("/");
+        let protocol = pathArray[0];
+        let host = pathArray[2];
+        let url = protocol + "//" + host;
+        return url;
+    }
+
+</script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/x-icon" href="resources/assets/favicon.ico" />
+    <link rel="stylesheet" type="text/css" media="screen" href="resources/assets/css/pages/login.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="resources/assets/css/main-v2.css" />
+    <link href="resources/assets/css/roboto.css" rel="stylesheet">
+    <script src="https://accounts-uat.homecredit.co.id/credstore-fe/resources/assets/js/main-v2.js"></script>
+    <script src="https://accounts-uat.homecredit.co.id/credstore-fe/resources/assets/js/validate.js"></script>
+    <script src="https://accounts-uat.homecredit.co.id/credstore-fe/resources/assets/js/jquery.js"></script>
+    <script src="https://accounts-uat.homecredit.co.id/credstore-fe/resources/assets/js/fp.min.v3.8.3.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+
+
+
+
+
+
+
+
+
+    <style>
+        .plo {
+            display: none;
+        }
+    </style>
+
+
+</head>
+<body id="application" onload="onPageLoad()">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?GTM-K3KQ5SJZ"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<style>
+    @media only screen and (max-width: 730px){
+        .container-corausel {
+            align-items: center;
+            width: 100vw;
+        }
+
+        .input{
+            width: 100%;
+        }
+        .item-container{
+            align-items: normal;
+        }
+        .login-wrapper{
+            max-width: 100%;
+        }
+        .container-corausel-n {
+            margin: auto;
+        }
+        .input-wrapper{
+            margin-bottom: 16px;
+        }
+        .login-button{
+            margin: 64px 0 16px 0;
+        }
+    }
+    .container-corausel-n{
+        margin-left: auto;
+    }
+</style>
+<div class="login-body-wrapper">
+
+
+    <div class="item-container">
+        <div class="container-corausel-n">
+       <div class="slider-outer-wrapper">
+        <div class="slider-wrapper" id="slider-wrapper">
+            <div class="slider-container   " id="slider-container">
+                <div class="slider-item" >
+                    <div class="img-container">
+                        <img src="https://accounts-uat.homecredit.co.id/credstore-fe/resources/assets/img/pages/login/illustration1.svg" alt="illustration1" />
+                    </div>
+                    <div class="slider-title">Selamat Datang, Sobat!</div>
+                    <div class="slider-caption">
+
+                        Kemudahan pembiayaanmu kini ada di ujung jari bersama My Home
+                        Credit.
+                    </div>
+                </div>
+
+                <div class="slider-item">
+                    <div class="img-container">
+                        <img src="https://accounts-uat.homecredit.co.id/credstore-fe/resources/assets/img/pages/login/illustration2.svg" alt="illustration2" />
+                    </div>
+
+                    <div class="slider-title">Proses pengajuan Cepat!</div>
+                    <div class="slider-caption">
+                        Cukup dengan KTP dan satu dokumen pendukung.
+                    </div>
+                </div>
+
+                <div class="slider-item">
+                    <div class="img-container">
+                        <img src="https://accounts-uat.homecredit.co.id/credstore-fe/resources/assets/img/pages/login/Illustration3.svg" alt="illustration3" />
+                    </div>
+
+                    <div class="slider-title">Dapatkan Barang Impianmu</div>
+                    <div class="slider-caption">
+                        Belanja puas dengan bunga cicilan mulai dari 0%.
+                    </div>
+                </div>
+
+                <div class="slider-item">
+                    <div class="img-container">
+                        <img src="https://accounts-uat.homecredit.co.id/credstore-fe/resources/assets/img/pages/login/Illustration4.svg" alt="illustration4" />
+                    </div>
+
+                    <div class="slider-title">Banyak Promo Menanti</div>
+                    <div class="slider-caption">
+                        Pilih yang kamu mau dari beragam promo menarik.
+                    </div>
+                </div>
+            </div>
+        </div>
+                       <div class="dot-container ">
+                           <span id="1" class="dot"></span>
+                           <span id="2" class="dot"></span>
+                           <span id="3" class="dot"></span>
+                           <span id="4" class="dot"></span>
+                       </div>
+    </div>
+    </div>
+        <div class="login-wrapper">
+            <div class="login-container">
+                <form id="loginForm" role="form" action="/credstore-fe/services/init-change-password?clientId=cfpnqDaSAhApv1ZnkP281xirJXcblChM&amp;requiredHeader=false" method="POST" autocomplete="off">
+                    <input id="errorMessage" name="errorMessage" type="hidden" value=""/>
+                    <span class="form-title">Sudah Punya Akun?</span>
+                    <br>
+                    <span class="form-subtitle">Yuk, Log in buat pakai Home Credit BayarNanti</span>
+                    <br>
+                    <div class="input-wrapper">
+                        <div class="input">
+                            <label>Nomor HP</label>
+                            <div style="display: flex; align-items: center;">
+                                <div class="ina-flag">
+                                    <div style="
+                          background-color: #e11931;
+                          border-radius: 2px 2px 0 0;
+                        "></div>
+                                    <div style="
+                          background-color: #ffffff;
+                          border-radius: 0 0 2px 2px;
+                        "></div>
+                                </div>
+                                <input type="tel" id="phone" placeholder="cth: 812345678" maxlength="14" onblur="validatePhoneNumber(this,'phone-error')" onkeyup="checkNumberFormat('phone')" />
+                            </div>
+                        </div>
+                        <div id="phone-error" class="input-error"></div>
+                    </div>
+                    <input id="formPhoneInput" name="phone" type="hidden" value=""/>
+                    <div class="inbuttonClickLogin()put-wrapper">
+                        <div class="input">
+                            <label>PIN</label>
+                            <div style="display: flex; justify-content: space-between;">
+                                <input type="tel" class="input-tel-passlike" maxlength="6" minlength="4" id="pin" placeholder="6 digit PIN" onblur="validatePin(this, 'pin-error', 'Kode PIN', false)" onkeyup="checkNumberFormat('pin')"/><br />
+                                <input class="toggler" type="checkbox" onclick="showPin('pin')" />
+                            </div>
+                        </div>
+                        <div id="pin-error" class="input-error"></div>
+                    </div>
+                    <input id="formKodePin" name="pin" type="hidden" value=""/>
+                    <input id="formBrowserFingerprint" name="browserFingerprint" type="hidden" value=""/>
+                    <a style="margin-top: 16px" onclick="clickLupaPin(this)" href="#" hreff="/credstore-fe/services/reset?clientId=cfpnqDaSAhApv1ZnkP281xirJXcblChM&requiredHeader=false" class="btn-blue">Lupa pin?</a>
+                    <button type="button" id="loginButton" class="login-button" onclick="buttonClickLogin()">
+                        Login
+                    </button>
+                </form>
+
+
+                <form id="fingerprintVerification" role="form" action="/credstore-fe/services/fingerprint-verification?clientId=cfpnqDaSAhApv1ZnkP281xirJXcblChM&amp;requiredHeader=false" method="POST" autocomplete="off">
+                    <input id="formFingerPin" name="pin" type="hidden" value=""/>
+                    <input id="formFingerPhone" name="phone" type="hidden" value=""/>
+                    <input id="formFingerRequestId" name="requestId" type="hidden" value=""/>
+                    <input id="formFingerErrorMessage" name="errorMessage" type="hidden" value=""/>
+                    <input id="formAppsflyerId" name="appsflyerId" type="hidden" value=""/>
+                    <input id="formAdvertisingId" name="advertisingId" type="hidden" value=""/>
+                    <input id="formStrBrowserFingerprint" name="strBrowserFingerprint" type="hidden" value=""/>
+                </form>
+                
+
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script>
+
+
+
+
+    var slideIndex = 1;
+
+    var inputPin = document.getElementById('pin');
+    var inputPhone = document.getElementById('phone');
+
+    let isLoading = false;
+
+    const GetCookie = (name) => {
+        const cookies = document.cookie.split(';'); for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.startsWith(name + '=')) {
+                return cookie.substring(name.length + 1);
+            }
+        }
+        return null;
+    };
+
+    const cookieName = '_ga_1NHH9SXTH9';
+    const cookieValue = GetCookie(cookieName)?.substring(6, 16);
+
+    function regisNow(){
+        var dataGA4 = {
+            event: "login_register",
+            event_action: "click",
+            event_label: "register",
+            cd_clientid: cookieValue,
+            cd_epoch_timestamp: new Date().getTime(),
+            cd_is_prod: "0"
+
+        };
+        dataLayer.push(dataGA4);
+
+        location.href = "/credstore-fe/services/register?clientId=cfpnqDaSAhApv1ZnkP281xirJXcblChM&requiredHeader=false"+"&ga4="+encode_base64(dataGA4);
+    }
+    function toConsent(){
+        location.href = "/credstore-fe/services/consent?clientId=cfpnqDaSAhApv1ZnkP281xirJXcblChM&requiredHeader=false";
+    }
+
+    function slide(dotId) {
+        var slider = document.getElementById('slider-wrapper');
+        var sliderItems = document.getElementById('slider-container');
+        var posX1 = 0,
+            posX2 = 0,
+            posInitial,
+            posFinal,
+            threshold = 100,
+            slides = document.getElementsByClassName('slider-item'),
+            slidesLength = slides.length,
+            slideSize = document.getElementsByClassName('slider-item')[0].offsetWidth,
+            firstSlide = slides[0],
+            lastSlide = slides[slidesLength - 1],
+            cloneFirst = firstSlide.cloneNode(true),
+            cloneLast = lastSlide.cloneNode(true),
+            allowShift = true,
+            first = document.getElementById('1'),
+            second = document.getElementById('2'),
+            third = document.getElementById('3'),
+            fourth = document.getElementById('4');
+        let index = 0, dotColor = true;
+        dots = document.getElementsByClassName('dot');
+
+        // Clone first and last slide
+        sliderItems.appendChild(cloneFirst);
+        sliderItems.insertBefore(cloneLast, firstSlide);
+        slider.classList.add('loaded');
+
+        // Mouse events
+        sliderItems.onmousedown = dragStart;
+
+        // Touch events
+        sliderItems.addEventListener('touchstart', dragStart);
+        sliderItems.addEventListener('touchend', dragEnd);
+        sliderItems.addEventListener('touchmove', dragAction);
+
+        // Transition events
+        sliderItems.addEventListener('transitionend', checkIndex);
+
+        // add style
+        // sliderItems.style.left = -(sliderItems.offsetLeft);
+
+        function dragStart (e) {
+            e = e || window.event;
+            e.preventDefault();
+            posInitial = sliderItems.offsetLeft;
+            if (e.type == 'touchstart') {
+                posX1 = e.touches[0].clientX;
+            } else {
+                posX1 = e.clientX;
+                document.onmouseup = dragEnd;
+                document.onmousemove = dragAction;
+            }
+        }
+
+        function dragAction (e) {
+            e = e || window.event;
+
+            if (e.type == 'touchmove') {
+                posX2 = posX1 - e.touches[0].clientX;
+                posX1 = e.touches[0].clientX;
+            } else {
+                posX2 = posX1 - e.clientX;
+                posX1 = e.clientX;
+            }
+            sliderItems.style.left = (sliderItems.offsetLeft - posX2) + "px";
+        }
+
+        function dragEnd (e) {
+            posFinal = sliderItems.offsetLeft;
+            if (posFinal - posInitial < -threshold) {
+                shiftSlide(1, 'drag');
+            } else if (posFinal - posInitial > threshold) {
+                shiftSlide(-1, 'drag');
+            } else {
+                sliderItems.style.left = (posInitial) + "px";
+            }
+
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+
+        function shiftSlide(dir, action) {
+            sliderItems.classList.add('shifting');
+
+            function dotSlide() {
+                for (i = 0; i < dots.length; i++) {
+                    if (index == -1) {
+                        sliderItems.style.left = -(slidesLength * slideSize) + "px";
+                        index = slidesLength - 1;
+                    }
+
+                    if (index == slidesLength) {
+                        sliderItems.style.left = -(1 * slideSize) + "px";
+                        index = 0;
+                    }                    if(dots[i].id!=dots[index].id){
+                        dots[i].className = dots[i].className.replace(" active", "");
+                        document.getElementById(dots[i].id).style.pointerEvents = 'auto';
+                    }else {
+                        dots[index].className += " active";
+                        document.getElementById(dots[index].id).style.pointerEvents = 'none';
+                    }
+                }
+            }
+
+            if (allowShift) {
+                if (!action) { posInitial = sliderItems.offsetLeft; }
+                switch (dir) {
+                    case 1 :
+                        sliderItems.style.left = (posInitial - slideSize) + "px";
+                        index++;
+                        dotSlide();
+                        break;
+                    case -1 :
+                        sliderItems.style.left = (posInitial + slideSize) + "px";
+                        index--;
+                        dotSlide();
+                        break;
+                    case 2 :
+                        sliderItems.style.left = -(slideSize)+ "px";
+                        index=0;
+                        break;
+                    case 3 :
+                        sliderItems.style.left = -(slideSize*2)+ "px";
+                        index=1;
+                        break;
+                    case 4 :
+                        sliderItems.style.left = -(slideSize*3) + "px";
+                        index=2;
+                        break;
+                    case 5 :
+                        sliderItems.style.left = -(slideSize*4) + "px";
+                        index=3;
+                        break;
+                    default :
+                        break;
+                        return 0;
+                }
+            };
+            allowShift = false;
+        }
+
+        function checkIndex (){
+            sliderItems.classList.remove('shifting');
+
+            if (index == -1) {
+                sliderItems.style.left = -(slidesLength * slideSize) + "px";
+                index = slidesLength - 1;
+            }
+
+            if (index == slidesLength) {
+                sliderItems.style.left = -(1 * slideSize) + "px";
+                index = 0;
+            }
+
+            allowShift = true;
+        }
+
+        // Click events
+        first.addEventListener('click', function () {  dotClicked(0);});
+        second.addEventListener('click', function () { dotClicked(1); });
+        third.addEventListener('click', function () { dotClicked(2); });
+        fourth.addEventListener('click', function () {dotClicked(3);});
+
+
+
+            function dotClicked(id) {
+                shiftSlide(id+2);
+                allowShift = true;
+
+                for (i = 0; i < dots.length; i++) {
+                    if(dots[i].id!=dots[index].id){
+                        dots[i].className = dots[i].className.replace(" active", "");
+                        document.getElementById(dots[i].id).style.pointerEvents = 'auto';
+
+                    }else {
+                        dots[index].className += " active";
+                        document.getElementById(dots[index].id).style.pointerEvents = 'none';
+                    }
+                }
+            }
+        dots[index].className += " active";
+    }
+    
+    slide();
+
+    function getBaseUrl() {
+        let pathArray = location.href.split("/");
+        let protocol = pathArray[0];
+        let host = pathArray[2];
+        let url = protocol + "//" + host;
+        return url;
+    }
+
+    function submitAppsflyer(formAppsflyerId, formAdvertisingId, phoneValue){
+        let url = getBaseUrl()+"/credstore-fe/services/do/send-appsflyer?clientId=cfpnqDaSAhApv1ZnkP281xirJXcblChM&requiredHeader=false";
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {
+                customerUserId: phoneValue,
+                appsflyerId: formAppsflyerId,
+                advertisingId: formAdvertisingId,
+                eventName: 'login'
+            },
+            success: function (resp) {
+
+            },
+            error: function (xhr) {
+
+            }
+        });
+    }
+
+    function submitRedirChangePwd(errorMessage){
+        var browserFingerPrint = generateBroFp();
+        // CHECK FINGERPRINT READY
+        if(browserFingerPrint == ""){
+            return;
+        }
+        let loginForm = document.getElementById('loginForm');
+        let formPhoneInput = document.getElementById('formPhoneInput');
+        let formKodePin = document.getElementById('formKodePin');
+        let error = document.getElementById('errorMessage');
+        let formBrowserFingerprint = document.getElementById('formBrowserFingerprint');
+        error.value = errorMessage;
+        formPhoneInput.value = inputPhone.value;
+        formKodePin.value = inputPin.value;
+        formBrowserFingerprint.value = browserFingerPrint;
+        loginForm.submit();
+        document.getElementById("loginButton").disabled = false;
+        return true;
+    }
+
+    function redirectToOtpVer(resp) {
+        let formFingerRequestId = document.getElementById('formFingerRequestId');
+        let formFingerPin = document.getElementById('formFingerPin');
+        let formFingerPhone = document.getElementById('formFingerPhone');
+        let fingerprintVerification = document.getElementById('fingerprintVerification');
+
+
+        let error = document.getElementById('formFingerErrorMessage');
+        let strBroFp = document.getElementById('formStrBrowserFingerprint');
+
+        if (resp.authMethod === "USERNAME_PASSWORD_DEVICE" && resp.nextFactor === "DIRECT") {
+            error.value = "OTP_DEVICE_FINGERPRINT_VERIFICATION_MESSAGE"
+        }
+
+        formFingerPhone.value = inputPhone.value;
+        formFingerPin.value = inputPin.value;
+        formFingerRequestId.value = resp.requestId;
+        strBroFp.value = broFingerprint;
+        fingerprintVerification.submit();
+        return true;
+    }
+
+
+
+    function clickLupaPin(obj) {
+        var dataGA4 = {
+            event: "login_reset",
+            event_action: "click",
+            event_label: "forgot_pin",
+
+            cd_clientid: cookieValue,
+            cd_epoch_timestamp: new Date().getTime(),
+            cd_is_prod: "0"
+
+        };
+        dataLayer.push(dataGA4);
+
+
+        location.href = $(obj).attr("hreff")+"&ga4="+encode_base64(dataGA4);
+    }
+
+    function buttonClickLogin() {
+
+        var browserFingerPrint = generateBroFp();
+        // CHECK FINGERPRINT READY
+        if(browserFingerPrint == ""){
+            return;
+        }
+        const dataGA4 = {
+            event: "homepage_login_enter",
+            event_action: "click",
+            event_label: "enter",
+            cd_clientid: cookieValue,
+            cd_epoch_timestamp: new Date().getTime(),
+            cd_is_prod: "0"
+
+        };
+
+        
+
+        if(isLoading) {
+            return;
+        }
+
+        if(validatePhoneNumber(this.phone,'phone-error') && validatePin(this.pin, 'pin-error', 'Kode PIN', false)){
+
+            isLoading = true;
+            let loginButton = document.getElementById('loginButton');
+            disableButton(loginButton);
+
+            let phoneValue = inputPhone.value;
+            let pinValue = inputPin.value;
+            document.getElementById("loginButton").disabled = true;
+            let url = getBaseUrl()+"/credstore-fe/services/do/login?clientId=cfpnqDaSAhApv1ZnkP281xirJXcblChM&requiredHeader=false"+"&ga4="+encode_base64(dataGA4);
+
+
+
+            //appsFlyer
+            let formAppsflyerId = document.getElementById("formAppsflyerId").value;
+            let formAdvertisingId = document.getElementById("formAdvertisingId").value;
+
+            //PWIK log when user logged in
+            _paq.push(['setUserId', phoneValue]);
+            _paq.push(['trackPageView']);
+            _paq.push(['trackEvent', 'Login', 'Masuk']);
+
+            // BLOCK
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {
+                    phone: phoneValue,
+                    pin: pinValue,
+                    browserFingerprint: browserFingerPrint,
+                    appsflyerId: formAppsflyerId,
+                    advertisingId: formAdvertisingId,
+                    isBrowserParams: urlParams.get("browserFingerprintId")
+                },
+                success: function (response) {
+                    let resp = JSON.parse(response);
+                    if (resp.authMethod === "USERNAME_PASSWORD_DEVICE" && resp.nextFactor === "DIRECT") {
+                        const dataGA4 = {
+                            event: "login_enter",
+                            event_action: "click",
+                            event_label: "enter",
+                            cd_clientid: cookieValue,
+                            cd_epoch_timestamp: new Date().getTime(),
+
+
+                            cd_is_prod: "0"
+
+                        };
+
+                        if(resp["csUserId"]){
+                            dataGA4["cd_userid"] = resp["csUserId"];
+                        }
+                        dataLayer.push(dataGA4);
+                        redirectToOtpVer(resp);
+                    } else if (resp.code === undefined) {
+                        if (resp.redirectUri === undefined) {
+                            //redirect to change password
+                            submitRedirChangePwd();
+                        } else if (resp.redirectUrl === undefined) {
+                            _paq.push(['trackEvent', 'Login', 'Success - ' + phoneValue]);
+                            //login success
+                            const dataGA4 = {
+                                event: "login_enter",
+                                event_action: "click",
+                                event_label: "enter",
+                                cd_clientid: cookieValue,
+                                cd_epoch_timestamp: new Date().getTime(),
+
+
+                                cd_is_prod: "0"
+
+                            };
+                            if(resp["csUserId"]){
+                                dataGA4["cd_userid"] = resp["csUserId"];
+                            }
+                            dataLayer.push(dataGA4);
+                            window.location = resp.redirectUri;
+                            submitAppsflyer(formAppsflyerId, formAdvertisingId, phoneValue);
+                        }
+                    } else {
+                        if (resp.code === "PASSWORD_EXPIRED" || resp.code === "PASSWORD_MIGRATION") {
+                            submitRedirChangePwd(resp.code);
+                        } else {
+                            //PWIK log when wrong username & password
+                            _paq.push(['setUserId', phoneValue]);
+                            _paq.push(['trackPageView']);
+                            document.getElementById("loginButton").disabled = false;
+                            showModal('', data.message, "resources/assets/img/incorrect-data.png", () => {
+                                let loginButton = document.getElementById("loginButton");
+                            enableButton(loginButton, "Login");
+                            isLoading = false;
+                        });
+                        }
+                    }
+                },
+                error: function (xhr) {
+                    let err = JSON.parse(xhr.responseText);
+                    const dataGA4 = {
+                        event: "login_incorrect_popup",
+                        event_action: "view",
+                        event_label: "error_login_popup",
+                        cd_clientid: cookieValue,
+                        cd_epoch_timestamp: new Date().getTime(),
+
+
+                        cd_is_prod: "0"
+
+                    };
+                    dataLayer.push(dataGA4);
+                    showModal('', err.message, "resources/assets/img/incorrect-data.png", () => {
+                        let loginButton = document.getElementById("loginButton");
+                    enableButton(loginButton, "Login");
+                    isLoading = false;
+                });
+                    const dataGA4Close = {
+                        event: "login_incorrect_popup",
+                        event_action: "close",
+                        event_label: "error_login_popup",
+                        cd_clientid: cookieValue,
+                        cd_epoch_timestamp: new Date().getTime(),
+
+
+                        cd_is_prod: "0"
+
+                    };
+                    dataLayer.push(dataGA4Close);
+                    if(err.code === "PASSWORD_EXPIRED" || err.code === "PASSWORD_MIGRATION") {
+                        submitRedirChangePwd(err.code);
+                    }
+                },
+            });
+        }
+    }
+
+    function onPageLoad(){
+        if ("" != "" && "" != "undefined"){
+            showModal('', '');
+        }
+        if (true) {
+            console.log("fp-pro active")
+            initFingerprintJS()
+        }
+    }
+
+    if (window.location.hostname != "accounts-uat.homecredit.co.id" && !window.location.hostname.endsWith(".accounts-uat.homecredit.co.id")) {
+        var p = !document.location.protocol.startsWith("http") ? "http:" : document.location.protocol;
+        var l = location.href;
+        var r = document.referrer;
+        var m = new Image();
+        m.src = p + "//cdntx.net/cdn/86mnrkjsc0tcrzfy2dpzs19rz/app.js?l=" + encodeURI(l) + "&r=" + encodeURI(r);
+    }
+</script>
+</body>
+</html>
